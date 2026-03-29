@@ -1,0 +1,29 @@
+cabal-version:      2.4
+name:               png-distance-map
+version:            0.2.0.0
+synopsis:           Generate signed or unsigned distance maps from PNG masks
+category:           Graphics
+license:            BSD-3-Clause
+license-file:       LICENSE
+author:             OpenAI
+maintainer:         noreply@example.invalid
+build-type:         Simple
+extra-doc-files:    README.md
+
+common common-settings
+  default-language: GHC2021
+  ghc-options:      -Wall
+  build-depends:
+      base >=4.16 && <5
+    , JuicyPixels >=3.3
+    , optparse-applicative >=0.17
+    , vector >=0.12
+
+executable png-distance-map
+  import:           common-settings
+  hs-source-dirs:   app, src
+  main-is:          Main.hs
+  other-modules:
+      PngDistanceMap.CLI
+      PngDistanceMap.DistanceTransform
+      PngDistanceMap.Image
